@@ -28,6 +28,11 @@ public class CriaturaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/periodo/{periodoId}")
+    public List<Criatura> listarPorPeriodo(@PathVariable Long periodoId){
+        return criaturaRepository.findByPeriodoId(periodoId);
+    }
+
     @PostMapping
     public ResponseEntity<Criatura> criar(@RequestBody Criatura criatura){
         Criatura novaCriatura = criaturaRepository.save(criatura);
