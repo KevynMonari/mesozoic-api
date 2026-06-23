@@ -21,6 +21,13 @@ public class PeriodoController {
         return periodoRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Periodo> buscarPorId(@PathVariable Long id){
+        return periodoRepository.findById(id)
+                .map(periodo -> ResponseEntity.ok(periodo))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<Periodo> criar(@RequestBody Periodo periodo){
         Periodo novoPeriodo = periodoRepository.save(periodo);

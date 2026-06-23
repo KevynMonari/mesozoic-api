@@ -21,6 +21,13 @@ public class CriaturaController {
         return criaturaRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Criatura> buscarPorId(@PathVariable Long id){
+        return criaturaRepository.findById(id)
+                .map(criatura -> ResponseEntity.ok(criatura))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<Criatura> criar(@RequestBody Criatura criatura){
         Criatura novaCriatura = criaturaRepository.save(criatura);
