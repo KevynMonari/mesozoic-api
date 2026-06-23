@@ -43,4 +43,19 @@ public class PeriodoController {
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Periodo> atualziar(@PathVariable Long id, @RequestBody Periodo dadosAtualizados){
+        return periodoRepository.findById(id)
+                .map(periodoExistente -> {
+                    periodoExistente.setNome(dadosAtualizados.getNome());
+                    periodoExistente.setEpoca(dadosAtualizados.getEpoca());
+                    periodoExistente.setClima(dadosAtualizados.getClima());
+                    periodoExistente.setDescricao(dadosAtualizados.getDescricao());
+
+                    Periodo periodoSalvo = periodoRepository.save(periodoExistente);
+                    return ResponseEntity.ok(periodoSalvo);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

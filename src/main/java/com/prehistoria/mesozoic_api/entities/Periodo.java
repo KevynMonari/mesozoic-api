@@ -24,4 +24,36 @@ public class Periodo {
     private String epoca;
     private String clima;
     private String descricao;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEpoca() {
+        return epoca;
+    }
+
+    public void setEpoca(String epoca) {
+        this.epoca = epoca;
+    }
+
+    public String getClima() {
+        return clima;
+    }
+
+    public void setClima(String clima) {
+        this.clima = clima;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

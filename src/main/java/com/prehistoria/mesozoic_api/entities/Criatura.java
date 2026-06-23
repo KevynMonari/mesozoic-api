@@ -26,4 +26,52 @@ public class Criatura {
     @ManyToOne
     @JoinColumn(name = "periodo_id")
     private Periodo periodo;
+
+    public String getNomeCientifico() {
+        return nomeCientifico;
+    }
+
+    public void setNomeCientifico(String nomeCientifico) {
+        this.nomeCientifico = nomeCientifico;
+    }
+
+    public String getNomePopular() {
+        return nomePopular;
+    }
+
+    public void setNomePopular(String nomePopular) {
+        this.nomePopular = nomePopular;
+    }
+
+    public String getDieta() {
+        return dieta;
+    }
+
+    public void setDieta(String dieta) {
+        this.dieta = dieta;
+    }
+
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public String getCuriosidade() {
+        return curiosidade;
+    }
+
+    public void setCuriosidade(String curiosidade) {
+        this.curiosidade = curiosidade;
+    }
+
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
+    }
 }

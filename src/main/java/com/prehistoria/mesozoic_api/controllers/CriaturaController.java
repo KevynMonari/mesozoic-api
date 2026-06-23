@@ -48,4 +48,25 @@ public class CriaturaController {
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Criatura> atualziar(@PathVariable Long id, @RequestBody Criatura dadosAtualizados){
+        return criaturaRepository.findById(id)
+                .map(criaturaExistente -> {
+                    criaturaExistente.setNomeCientifico(dadosAtualizados.getNomeCientifico());
+                    criaturaExistente.setNomePopular(dadosAtualizados.getNomePopular());
+                    criaturaExistente.setDieta(dadosAtualizados.getDieta());
+                    criaturaExistente.setTamanho(dadosAtualizados.getTamanho());
+                    criaturaExistente.setCuriosidade(dadosAtualizados.getCuriosidade());
+
+                    if (dadosAtualizados.getPeriodo() != null){
+                        criaturaExistente.setPeriodo(dadosAtualizados.getPeriodo());
+                    }
+
+                    Criatura criaturaSalva = criaturaRepository.save(criaturaExistente);
+                    return ResponseEntity.ok(criaturaSalva);
+
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }
