@@ -38,4 +38,14 @@ public class CriaturaController {
         Criatura novaCriatura = criaturaRepository.save(criatura);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaCriatura);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        return criaturaRepository.findById(id)
+                .map(criatura -> {
+                    criaturaRepository.delete(criatura);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

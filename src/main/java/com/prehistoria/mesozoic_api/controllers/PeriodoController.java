@@ -33,4 +33,14 @@ public class PeriodoController {
         Periodo novoPeriodo = periodoRepository.save(periodo);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoPeriodo);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        return periodoRepository.findById(id)
+                .map(periodo -> {
+                    periodoRepository.delete(periodo);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }
