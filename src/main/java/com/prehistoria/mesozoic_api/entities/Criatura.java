@@ -22,10 +22,19 @@ public class Criatura {
     private String dieta;
     private String tamanho;
     private String curiosidade;
+    private Double peso;
 
     @ManyToOne
     @JoinColumn(name = "periodo_id")
     private Periodo periodo;
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
 
     public String getNomeCientifico() {
         return nomeCientifico;
